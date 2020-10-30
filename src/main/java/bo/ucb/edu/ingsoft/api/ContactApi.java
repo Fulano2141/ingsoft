@@ -34,7 +34,12 @@ public class ContactApi {
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Contact findById(HttpServletRequest request) {
-        return agendaBl.findContactById(0);
+        return agendaBl.findContactById(1);
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String get() {
+        return agendaBl.findAllStudents();
     }
 
 

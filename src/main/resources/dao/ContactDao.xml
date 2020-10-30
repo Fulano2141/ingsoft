@@ -18,4 +18,19 @@
             1, #{txId}, #{txHost}, #{txUserId}, #{txDate}
         )
     </insert>
+    <insert id="insertAllData" parameterType="bo.ucb.edu.ingsoft.dto.ContactRequest">
+         INSERT INTO contact VALUES (
+            null, #{firstName}, null, #{firstSurname}, null,
+            1, #{txId}, #{txHost}, #{txUserId}, #{txDate}
+        )
+
+         INSERT INTO phone VALUES (
+            null, #{phoneNumber}, LAST_INSERT_ID(), 1, #{txId},
+            #{txHost}, #{txUserId}, #{txDate}
+        )
+        INSERT INTO address VALUES (
+            null, #{addressStreet}, #{addressCity}, #{addresCountry} LAST_INSERT_ID(),
+            #{txId}, #{txHost}, #{txUserId}, #{txDate}
+        )
+    </insert>
 </mapper>
