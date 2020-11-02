@@ -12,24 +12,22 @@
         WHERE
             contact_id = 2
     </select>
-    <insert id="create" parameterType="bo.ucb.edu.ingsoft.dto.Contact">
+    <insert id="createContact" parameterType="bo.ucb.edu.ingsoft.dto.Contact">
         INSERT INTO contact VALUES (
             null, #{firstName}, null, #{firstSurname}, null,
             1, #{txId}, #{txHost}, #{txUserId}, #{txDate}
         )
     </insert>
-    <insert id="insertAllData" parameterType="bo.ucb.edu.ingsoft.dto.ContactRequest">
-         INSERT INTO contact VALUES (
-            null, #{firstName}, null, #{firstSurname}, null,
-            1, #{txId}, #{txHost}, #{txUserId}, #{txDate}
-        )
-
-         INSERT INTO phone VALUES (
-            null, #{phoneNumber}, LAST_INSERT_ID(), 1, #{txId},
+    <insert id="createPhone" parameterType="bo.ucb.edu.ingsoft.dto.Phone">
+        INSERT INTO phone VALUES (
+            null, #{phoneNumber}, #{contactContactId}, 1, #{txId},
             #{txHost}, #{txUserId}, #{txDate}
-        )
+            )
+    </insert>
+
+    <insert id="createAddress" parameterType="bo.ucb.edu.ingsoft.dto.Address">
         INSERT INTO address VALUES (
-            null, #{addressStreet}, #{addressCity}, #{addresCountry} LAST_INSERT_ID(),
+            null, #{street}, #{city}, #{country}, #{contactContactId},
             #{txId}, #{txHost}, #{txUserId}, #{txDate}
         )
     </insert>

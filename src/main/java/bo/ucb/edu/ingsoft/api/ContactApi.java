@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.AgendaBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.Contact;
+import bo.ucb.edu.ingsoft.dto.ContactRequest;
 import bo.ucb.edu.ingsoft.dto.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
@@ -29,27 +30,32 @@ public class ContactApi {
     @Autowired
     public ContactApi(AgendaBl agendaBl, TransactionBl transactionBl) {
         this.agendaBl = agendaBl;
-        this.transactionBl =  transactionBl;
+        this.transactionBl = transactionBl;
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Contact findById(HttpServletRequest request) {
-        return agendaBl.findContactById(1);
-    }
+//    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public Contact findById(HttpServletRequest request) {
+//        return agendaBl.findContactById(1);
+//    }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String get() {
         return agendaBl.findAllStudents();
     }
 
-
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Contact createContact(@RequestBody Contact contact, HttpServletRequest request) {
+//    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public Contact createContact(@RequestBody Contact contact, HttpServletRequest request) {
+//        // Creamos transaccion para la operación.
+//        Transaction transaction = TransactionUtil.createTransaction(request);
+//        transactionBl.createTransaction(transaction);
+//        Contact contactResponse = agendaBl.createContact(contact, transaction);
+//        return contactResponse;
+//    }
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ContactRequest createContactRequest(@RequestBody ContactRequest contact, HttpServletRequest request) {
         // Creamos transaccion para la operación.
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
-        Contact contactResponse = agendaBl.createContact(contact, transaction);
-        return contactResponse;
+        return agendaBl.createContactRequest(contact, transaction);
     }
 }
