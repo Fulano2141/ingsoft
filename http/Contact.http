@@ -15,15 +15,17 @@ Content-Type: application/json
 ### Tarea: Modificar el codigo para que la siguiente invocacion funcione
 ### Asumimos: 1 contacto siempre tiene un teléfono y una dirección.
 ### Resultado de invocar este endpoint es 1 registro en contact, 1 registro en phone y 1 registro en address.
+
 POST http://localhost:8080/v1/contact
 Accept: application/json
 Content-Type: application/json
 
 {
-  "firstName": "Juan",
-  "firstSurname": "Perez",
+  "firstName": "Roberto",
+  "firstSurname": "Gomez",
   "phoneNumber": "70834566",
   "addressStreet": "14 de septiembre",
   "addressCity": "La Paz",
   "addressCountry": "Bolivia"
 }
+

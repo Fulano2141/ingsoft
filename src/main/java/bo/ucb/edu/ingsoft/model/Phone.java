@@ -1,24 +1,21 @@
-package bo.ucb.edu.ingsoft.dto;
+package bo.ucb.edu.ingsoft.model;
 
 import java.util.Date;
 
-public class Contact {
-    private Integer contactId;
-    private String firstName;
-    private String firstSurname;
+public class Phone {
+    private Integer phoneId;
+    private String phoneNumber;
+    private Integer contactContactId;
     private Integer status;
     private Integer txId;
     private String txHost;
     private Integer txUserId;
     private Date txDate;
 
-    public Contact() {
-    }
-
-    public Contact(Integer contactId, String firstName, String firstSurname, Integer status, Integer txId, String txHost, Integer txUserId, Date txDate) {
-        this.contactId = contactId;
-        this.firstName = firstName;
-        this.firstSurname = firstSurname;
+    public Phone(Integer phoneId, String phoneNumber, Integer contactContactId, Integer status, Integer txId, String txHost, Integer txUserId, Date txDate) {
+        this.phoneId = phoneId;
+        this.phoneNumber = phoneNumber;
+        this.contactContactId = contactContactId;
         this.status = status;
         this.txId = txId;
         this.txHost = txHost;
@@ -26,28 +23,31 @@ public class Contact {
         this.txDate = txDate;
     }
 
-    public Integer getContactId() {
-        return contactId;
+    public Phone() {
     }
 
-    public void setContactId(Integer contactId) {
-        this.contactId = contactId;
+    public Integer getPhoneId() {
+        return phoneId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setPhoneId(Integer phoneId) {
+        this.phoneId = phoneId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public String getFirstSurname() {
-        return firstSurname;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setFirstSurname(String firstSurname) {
-        this.firstSurname = firstSurname;
+    public Integer getContactContactId() {
+        return contactContactId;
+    }
+
+    public void setContactContactId(Integer contactContactId) {
+        this.contactContactId = contactContactId;
     }
 
     public Integer getStatus() {
@@ -92,15 +92,15 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "contactId=" + contactId +
-                ", firstName='" + firstName + '\'' +
-                ", firstSurname='" + firstSurname + '\'' +
+        return "Phone{" +
+                "phoneId=" + phoneId +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", contactContactId=" + contactContactId +
                 ", status=" + status +
                 ", txId=" + txId +
                 ", txHost='" + txHost + '\'' +
-                ", txUserId='" + txUserId + '\'' +
-                ", txDate='" + txDate + '\'' +
+                ", txUserId=" + txUserId +
+                ", txDate=" + txDate +
                 '}';
     }
 }

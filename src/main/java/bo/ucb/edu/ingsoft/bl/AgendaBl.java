@@ -1,9 +1,12 @@
 package bo.ucb.edu.ingsoft.bl;
 
-import bo.ucb.edu.ingsoft.api.ContactApi;
 import bo.ucb.edu.ingsoft.dao.ContactDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dto.*;
+import bo.ucb.edu.ingsoft.model.Address;
+import bo.ucb.edu.ingsoft.model.Contact;
+import bo.ucb.edu.ingsoft.model.Phone;
+import bo.ucb.edu.ingsoft.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +66,12 @@ public class AgendaBl {
         contactRequest.setTxDate(transaction.getTxDate());
         LOGGER.debug(contactRequest.toString());
 
-        Contact contact1 = new Contact(null, contactRequest.getFirstName(), contactRequest.getFirstSurname(), 1, contactRequest.getTxId(), contactRequest.getTxHost(), contactRequest.getTxUserId(), contactRequest.getTxDate());
+        Contact contact1 = new Contact(null, contactRequest.getFirstName(), contactRequest.getFirstSurname(), 1);
+        contact1.setTxId(transaction.getTxId());
+        contact1.setTxUserId(transaction.getTxUserId());
+        contact1.setTxHost(transaction.getTxHost());
+        contact1.setTxDate(transaction.getTxDate());
+
         contactDao.createContact(contact1);
         Integer getLastId = transactionDao.getLastInsertId();
         contact1.setContactId(getLastId);

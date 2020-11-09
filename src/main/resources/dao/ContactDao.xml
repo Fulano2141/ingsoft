@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bo.ucb.edu.ingsoft.dao.ContactDao">
-    <select id="findByContactId" resultType="bo.ucb.edu.ingsoft.dto.Contact">
+    <select id="findByContactId" resultType="bo.ucb.edu.ingsoft.model.Contact">
         SELECT
                contact_id as contactId,
                first_name as firstName,
@@ -12,20 +12,20 @@
         WHERE
             contact_id = 2
     </select>
-    <insert id="createContact" parameterType="bo.ucb.edu.ingsoft.dto.Contact">
+    <insert id="createContact" parameterType="bo.ucb.edu.ingsoft.model.Contact">
         INSERT INTO contact VALUES (
             null, #{firstName}, null, #{firstSurname}, null,
             1, #{txId}, #{txHost}, #{txUserId}, #{txDate}
         )
     </insert>
-    <insert id="createPhone" parameterType="bo.ucb.edu.ingsoft.dto.Phone">
+    <insert id="createPhone" parameterType="bo.ucb.edu.ingsoft.model.Phone">
         INSERT INTO phone VALUES (
             null, #{phoneNumber}, #{contactContactId}, 1, #{txId},
             #{txHost}, #{txUserId}, #{txDate}
             )
     </insert>
 
-    <insert id="createAddress" parameterType="bo.ucb.edu.ingsoft.dto.Address">
+    <insert id="createAddress" parameterType="bo.ucb.edu.ingsoft.model.Address">
         INSERT INTO address VALUES (
             null, #{street}, #{city}, #{country}, #{contactContactId},
             #{txId}, #{txHost}, #{txUserId}, #{txDate}
